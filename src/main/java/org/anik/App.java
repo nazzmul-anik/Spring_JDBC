@@ -17,9 +17,10 @@ public class App {
         ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
         StudentDao studentDao = (StudentDao) context.getBean("studentDao");
         Student student = new Student();
-        student.setId(102);
-        student.setName("Bushra");
-        student.setCity("Goran");
-        studentDao.insert(student);
+        student.setId(222);
+        student.setName("Zim");
+        student.setCity("Khilgaon");
+//        studentDao.insertOject(student);
+        studentDao.updateObject(student);
     }
 }
