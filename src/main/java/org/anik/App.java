@@ -21,6 +21,7 @@ public class App {
         student.setName("Zim");
         student.setCity("Khilgaon");
 //        studentDao.insertOject(student);
-        studentDao.updateObject(student);
+//        studentDao.updateObject(student);
+        studentDao.deleteObject(student.getId());
     }
 }
