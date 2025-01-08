@@ -4,6 +4,8 @@ import org.anik.entity.Student;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import java.util.List;
+
 public class StudentDaoImplementation implements StudentDao{
 
     private JdbcTemplate jdbcTemplate;
@@ -34,6 +36,13 @@ public class StudentDaoImplementation implements StudentDao{
         RowMapper<Student> rowMapper = new RowMapperImplementation();
         Student student = this.jdbcTemplate.queryForObject(query, rowMapper, studentId);
         return student;
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        String query = "select *from student";
+        List<Student> studentList = this.jdbcTemplate.query(query, new RowMapperImplementation());
+        return studentList;
     }
 
 
