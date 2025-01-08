@@ -3,6 +3,7 @@ package org.anik.config;
 import org.anik.dao.StudentDao;
 import org.anik.dao.StudentDaoImplementation;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -12,6 +13,7 @@ import javax.sql.DataSource;
 //Without XML file configuration setup
 
 @Configuration
+@ComponentScan(basePackages = {"org.anik.dao"})
 public class JDBCConfig {
     @Bean("ds")
     public DriverManagerDataSource getDataSource(){

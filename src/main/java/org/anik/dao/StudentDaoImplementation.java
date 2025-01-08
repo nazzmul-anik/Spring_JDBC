@@ -1,13 +1,18 @@
 package org.anik.dao;
 
 import org.anik.entity.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component("studentDao")
 public class StudentDaoImplementation implements StudentDao{
 
+    @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
     public int insertObject(Student student) {
