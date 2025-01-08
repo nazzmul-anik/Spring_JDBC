@@ -17,11 +17,13 @@ public class App {
         ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
         StudentDao studentDao = (StudentDao) context.getBean("studentDao");
         Student student = new Student();
-        student.setId(222);
+        student.setId(102);
         student.setName("Zim");
         student.setCity("Khilgaon");
-//        studentDao.insertOject(student);
+//        studentDao.insertObject(student);
 //        studentDao.updateObject(student);
-        studentDao.deleteObject(student.getId());
+//        studentDao.deleteObject(student.getId());
+        Student student1 = studentDao.getStudent(student.getId());
+        System.out.println(student1);
     }
 }

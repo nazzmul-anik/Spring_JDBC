@@ -2,12 +2,13 @@ package org.anik.dao;
 
 import org.anik.entity.Student;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 public class StudentDaoImplementation implements StudentDao{
 
     private JdbcTemplate jdbcTemplate;
     @Override
-    public int insertOject(Student student) {
+    public int insertObject(Student student) {
         String query = "insert into student(id, name, city) values (?, ?, ?)";
         int result = this.jdbcTemplate.update(query, student.getId(), student.getName(), student.getCity());
         return result;
@@ -26,6 +27,15 @@ public class StudentDaoImplementation implements StudentDao{
         int result = this.jdbcTemplate.update(deleteQuery, studentId);
         return result;
     }
+
+    @Override
+    public Student getStudent(int studentId) {
+        String query = "select *from student where id = ?";
+        RowMapper<Student> rowMapper = new RowMapperImplementation();
+        Student student = this.jdbcTemplate.queryForObject(query, rowMapper, studentId);
+        return student;
+    }
+
 
     public JdbcTemplate getJdbcTemplate() {
         return jdbcTemplate;
